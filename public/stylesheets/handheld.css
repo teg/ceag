@@ -1,0 +1,55 @@
+html {
+    font-family: verdana, arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: #fff;
+    color: #000;
+}
+
+img {
+    border: none;
+}
+
+a:link, a:visited {
+    color: #000;
+    background: #fff;
+}
+
+a:hover, a:active {
+    color: #777;
+    background: #fff;
+}
+
+#links, #ceag_collage {
+    display: none;
+}
+
+#content {
+    text-align: left;
+}
+
+.noprint, #mail {
+    display: none;
+}
+
+#ceag_logo {
+    display: inline;
+    margin: 50px 50px 50px 0px;
+}
+
+
+#catalogue {
+    margin-left: 33%;
+    margin-top: 200px;
+}
+
+p.mainlinks  {
+    font-size: 150%;
+}

@@ -1,0 +1,33 @@
+<table>
+<tr>
+    <th></th><th>Hovedkontor</th><th>Avdeling Sandnes</th>
+</tr>
+<tr class="even">
+    <th></th>
+    <td>COOPER Crouse-Hinds AS</td>
+    <td>COOPER Crouse-Hinds AS</td>
+</tr>
+<tr class="odd">
+    <th>Besøksadresse</th>
+    <td>Husebysletta 9<br />3400 Lier<br /><%= link_to_function "(kart)", "loadDrammen();" %></td>
+    <td>Torneroseveien 4<br />4315 Sandnes<br /><%= link_to_function "(kart)", "loadStavanger();" %></td>
+</tr>
+<tr class="even">
+    <th>Postadresse</th>
+    <td>Postboks 565<br />3412 Lierstranda</td>
+    <td>Postboks 269<br />4066 Stavanger</td>
+</tr>
+<tr class="odd">
+    <th>Telefon</th>
+    <td><%= format_phone 32244600 %></td>
+    <td><%= format_phone 51631135 %></td>
+</tr>
+<tr class="even">
+    <th>Faks</th>
+    <td><%= format_phone 32244646 %></td>
+    <td><%= format_phone 51631699 %></td>
+</tr>
+
+</table>
+
+<div id='map'></div>
