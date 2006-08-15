@@ -13,7 +13,7 @@
 <%= stylesheet_link_tag 'handheld', :media => 'handheld' %>
 <%= stylesheet_link_tag 'print', :media => 'print' %>
 <%= javascript_include_tag "prototype", "effects" %>
-<%= javascript_include_tag "virtualearth", "http://dev.virtualearth.net/mapcontrol/v3/mapcontrol.js" if @params[:action] == 'addresse' %>
+<%= javascript_include_tag "virtualearth", "http://dev.virtualearth.net/mapcontrol/v3/mapcontrol.js" if @params[:controller] == 'addresse' %>
 </head>
 
 <body>
