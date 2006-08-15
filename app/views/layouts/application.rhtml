@@ -12,6 +12,7 @@
 <%= stylesheet_link_tag 'screen', :media => 'screen' %>
 <%= stylesheet_link_tag 'handheld', :media => 'handheld' %>
 <%= stylesheet_link_tag 'print', :media => 'print' %>
+<%= javascript_include_tag "prototype", "effects" %>
 <%= javascript_include_tag "http://dev.virtualearth.net/mapcontrol/v3/mapcontrol.js" if @show_map %>
 <script type="text/javascript">
 <%= @content_for_page_scripts %>
