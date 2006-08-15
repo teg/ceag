@@ -50,7 +50,7 @@
   <% { '&nbsp;Produktkataloger&nbsp;' => 'produkter',
        '&nbsp;Kontaktpersoner&nbsp;' => 'kontaktpersoner', 
        '&nbsp;Adresse&nbsp;' => 'addresse' }.each_pair do |description, controller| %>
-    <li><%= link_to_unless_current description, :controller => controller %></li>
+    <li><%= link_to_unless controller == @controller.params[:controller], description, :controller => controller %></li>
   <% end %>
   </ul>
 
