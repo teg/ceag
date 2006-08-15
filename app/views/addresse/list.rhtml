@@ -9,8 +9,16 @@
 </tr>
 <tr class="odd">
     <th>Besøksadresse</th>
-    <td>Husebysletta 9<br />3400 Lier<br /><%= link_to_function "(kart)", "loadDrammen();" %></td>
-    <td>Torneroseveien 4<br />4315 Sandnes<br /><%= link_to_function "(kart)", "loadStavanger();" %></td>
+    <td>Husebysletta 9<br />3400 Lier<br /><%=  if @show_map
+                                                    link_to_function "(kart)", "loadDrammen();"
+                                                else
+                                                    link_to "(kart)", :action => 'vis_kart', :id => 'drammen'
+                                                end %></td>
+    <td>Torneroseveien 4<br />4315 Sandnes<br /><%= if @show_map
+                                                        link_to_function "(kart)", "loadStavanger();"
+                                                    else 
+                                                        link_to "(kart)", :action => 'vis_kart', :id => 'stavanger';
+                                                    end %></td>
 </tr>
 <tr class="even">
     <th>Postadresse</th>
@@ -31,3 +39,50 @@
 </table>
 
 <div id='map'></div>
+
+<% content_for("page_scripts") do %>
+
+    <% if @show_map %>
+
+    Event.observe(window, 'load', function()
+        {
+        <%= if :id == 'drammen'
+            'loadDrammen()'
+            else
+            'loadStavanger()'
+            end %>
+        }
+    );
+
+    var drammen = null;
+    var stavanger = null;
+    var map = null;
+    var pinDrammen = null;
+    var pinStavanger =  null;
+
+    function loadMaps() {
+        map = new VEMap('map');
+        drammen = new VELatLong(59.756896, 10.267966);
+        stavanger = new VELatLong(58.884387, 5.740382);
+        pinDrammen = new VEPushpin(1, drammen,'http://www.jklm.no/ceag/images/Ceag_small.gif','Hovedkontor','COOPER Crouse-Hinds AS, Husebysletta 9, 3400 Lier');
+        pinStavanger = new VEPushpin(2,stavanger,'http://www.jklm.no/ceag/images/Ceag_small.gif','Avdeling Sandnes','COOPER Crouse-Hinds AS, Torneroseveien 4, 4315 Sandnes');
+        map.LoadMap(drammen, 14 ,'r' , false);
+        map.AddPushpin(pinDrammen);
+        map.AddPushpin(pinStavanger);
+    }
+    
+    function loadDrammen() {
+        if( map == null ) {
+            loadMaps();
+        }
+        map.SetCenter(drammen);
+    }
+    
+    function loadStavanger() {
+        if( map == null ) {
+            loadMaps();
+        }
+        map.SetCenter(stavanger);
+    }
+    <% end %>
+<% end %>
