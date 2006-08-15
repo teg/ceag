@@ -37,7 +37,7 @@
 </tr>
 
 </table>
-
+<%= debug(@id) %>
 <div id='map'></div>
 
 <% content_for("page_scripts") do %>
@@ -46,10 +46,10 @@
 
     Event.observe(window, 'load', function()
         {
-        <%= if :id == 'drammen'
-            'loadDrammen()'
+        <%= if @id == 'drammen'
+                'loadDrammen()'
             else
-            'loadStavanger()'
+                'loadStavanger()'
             end %>
         }
     );
