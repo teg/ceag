@@ -1,11 +1,11 @@
-class WelcomeController < ApplicationController
+class KontaktpersonerController < ApplicationController
 
-  #caches_page :index, :address, :contact, :products
   def index
-    render :action => 'products'
+    list
+    render :action => 'list'
   end
-  
-  def contact
+
+  def list
     @people = [
       { :name => 'Ola Wiik', :position => 'administrerende direktør', :phone => [32244620,91633495], :mail => 'ow@ceag.no'},
       { :name => 'Per Ove Enga', :position => ['leder salgsstøtte', 'salg-/produktansvarlig ex'], :phone => [32244622,90822246], :mail => 'poe@ceag.no'},
