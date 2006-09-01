@@ -1,5 +1,7 @@
 class VedleggController < ApplicationController
 
+  before_filter :login_required, :only => [:create, :rediger, :destroy]
+
   def last_ned
     @attachment = Attachment.find(params[:id])
     send_file @attachment.path_to_file, :stream => true, 
@@ -25,6 +27,12 @@ class VedleggController < ApplicationController
   def rediger
     @attachment = Attachment.find(params[:id])
     @news = @attachment.news
+  end
+  
+  def destroy
+    #TODO remove file as well as reference
+    Attachment.find(params[:id]).destroy
+    redirect_to :controller => 'nyheter', :action => 'rediger', :id => news.id
   end
 
 end
