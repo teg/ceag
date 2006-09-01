@@ -47,6 +47,13 @@ tr {
     margin: 0;
 }
 
+div.news {
+    border: thin solid black;
+    width: 70%;
+    text-align: left;
+    padding: 0.5em;
+}
+
 #links {
     height: 50px;
     color: #fff;

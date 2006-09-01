@@ -1,0 +1,7 @@
+<h2><%= @news.title %></h2>
+
+<h3>Legg til vedlegg</h3>
+<%= form_tag( { :action => 'create', :news => @news },:multipart => true) %>
+  <%= render :partial => 'form' %>
+  <%= submit_tag "Legg til" %>
+<%= end_form_tag %>

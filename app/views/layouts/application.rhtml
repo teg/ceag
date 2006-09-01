@@ -47,7 +47,8 @@
 <!-- Tabs -->
   <ul id="tabmenu">
     <li id="mail"><a href="mailto:office@ceag.no" title="office@ceag.no">eMail <%= image_tag 'World.gif', :id => 'world' %></a></li>
-  <% { '&nbsp;Produktkataloger&nbsp;' => 'produkter',
+  <% { '&nbsp;Nyheter&nbsp;' => 'nyheter',
+       '&nbsp;Produktkataloger&nbsp;' => 'produkter',
        '&nbsp;Kontaktpersoner&nbsp;' => 'kontaktpersoner', 
        '&nbsp;Adresse&nbsp;' => 'addresse' }.each_pair do |description, controller| %>
     <li><%= link_to_unless controller == @controller.params[:controller], description, :controller => controller %></li>

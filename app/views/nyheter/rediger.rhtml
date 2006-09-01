@@ -1,0 +1,9 @@
+<h2>Rediger nyhet</h2>
+
+<%= start_form_tag :action => 'update', :id => @news %>
+  <%= render :partial => 'form' %>
+  <%= submit_tag 'Rediger' %>
+<%= end_form_tag %>
+
+<%= link_to 'Vis', :action => 'vis', :id => @news %> |
+<%= link_to 'Tilbake', :action => 'list' %>

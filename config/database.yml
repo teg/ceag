@@ -12,9 +12,9 @@
 #   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
 development:
   adapter: mysql
-  database: web_development
-  username: root
-  password:
+  database: ceag_dev
+  username: ceag
+  password: truzecut
   host: localhost
 
 # Warning: The database defined as 'test' will be erased and
@@ -22,14 +22,14 @@ development:
 # Do not set this db to the same as development or production.
 test:
   adapter: mysql
-  database: web_test
-  username: root
-  password:
+  database: ceag_test
+  username: ceag
+  password: truzecut
   host: localhost
 
 production:
   adapter: mysql
-  database: web_production
-  username: root
-  password: 
+  database: ceag
+  username: ceag
+  password: truzecut
   host: localhost

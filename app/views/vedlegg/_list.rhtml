@@ -1,0 +1,5 @@
+<ul>
+    <% attachments.each do |a| %>
+    <li><%= link_to a.name, :controller => 'vedlegg', :action => 'last_ned', :id => a.id %></li>
+    <% end %>
+</ul>
