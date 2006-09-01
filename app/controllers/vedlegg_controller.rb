@@ -11,7 +11,7 @@ class VedleggController < ApplicationController
     news = News.find_by_id(params[:news])
     attachment = Attachment.new(params[:attachment])
     news.attachments << attachment
-    redirect_to :controller => 'nyheter', :action => 'rediger'
+    redirect_to :controller => 'nyheter', :action => 'rediger', :id => news.id
   end
   
   def list
