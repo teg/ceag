@@ -28,7 +28,7 @@ class KontoController < ApplicationController
     @user.save!
     self.current_user = @user
     redirect_back_or_default(:controller => 'produkter')
-    flash[:notice] = "Brukeren #{user} har blitt opprettet."
+    flash[:notice] = "Brukeren #{@user} har blitt opprettet."
   rescue ActiveRecord::RecordInvalid
     render :action => 'ny'
   end

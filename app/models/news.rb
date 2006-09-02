@@ -4,6 +4,6 @@ class News < ActiveRecord::Base
   validates_presence_of :title, :body, :message => 'kan ikke være blank'
   
   def to_norwegian
-    "nyhet"
+    "nyheten"
   end
 end

@@ -49,6 +49,10 @@ class User < ActiveRecord::Base
     self.remember_token            = nil
     save(false)
   end
+  
+  def to_norwegian
+    "brukeren"
+  end
 
   protected
     # before filter 
@@ -61,8 +65,4 @@ class User < ActiveRecord::Base
     def password_required?
       crypted_password.blank? || !password.blank?
     end
-    
-  def to_norwegian
-    "bruker"
-  end
 end

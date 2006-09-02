@@ -29,6 +29,6 @@ class Attachment < ActiveRecord::Base
   end
   
   def to_norwegian
-    "vedlegg"
+    "vedlegget"
   end
 end
