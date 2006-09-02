@@ -27,4 +27,8 @@ class Attachment < ActiveRecord::Base
   def delete_file
     File.exists?(path_to_file) && File.delete(path_to_file) == 1
   end
+  
+  def to_norwegian
+    "vedlegg"
+  end
 end

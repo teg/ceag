@@ -61,4 +61,8 @@ class User < ActiveRecord::Base
     def password_required?
       crypted_password.blank? || !password.blank?
     end
+    
+  def to_norwegian
+    "bruker"
+  end
 end
