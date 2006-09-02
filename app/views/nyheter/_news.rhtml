@@ -1,10 +1,10 @@
 <div class="news">
     <h3><%= link_to news.title, :controller => 'nyheter', :action => 'vis', :id => news %></h3>
     <% if logged_in? %>
-      <p>[<%= link_to 'Legg til vedlegg', {:controller => 'vedlegg', :action => 'legg_til', :nyhet => news}%>]
-      [<%= link_to 'Rediger', {:controller => 'nyheter', :action => 'rediger', :id => news}%>]
-       [<%= link_to 'Slett', {:controller => 'nyheter', :action => 'slett', :id => news}, :confirm => 'Er du sikker?', :post => true
-       %>]</p>
+      <p><span class="button">[<%= link_to 'Legg til vedlegg', {:controller => 'vedlegg', :action => 'legg_til', :nyhet => news}%>]</span>
+      <span class="button">[<%= link_to 'Rediger', {:controller => 'nyheter', :action => 'rediger', :id => news}%>]</span>
+       <span class="button">[<%= link_to 'Slett', {:controller => 'nyheter', :action => 'slett', :id => news}, :confirm => 'Er du sikker?', :post => true
+       %>]</span></p>
     <% end %>
     
     <p>

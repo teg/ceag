@@ -2,8 +2,8 @@
     <% attachments.each do |a| %>
     <li><%= link_to a.name, :controller => 'vedlegg', :action => 'last_ned', :id => a.id %>
       <% if logged_in? %>
-        [<%= link_to 'Slett', {:controller => 'vedlegg', :action => 'slett', :id => a}, :confirm => 'Er du sikker?', :post => true
-         %>]
+        <span class="button">[<%= link_to 'Slett', {:controller => 'vedlegg', :action => 'slett', :id => a}, :confirm => 'Er du sikker?', :post => true
+         %>]</span>
       <% end %>
     </li>
     <% end %>

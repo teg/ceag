@@ -54,6 +54,10 @@ div.news {
     padding: 0.5em;
 }
 
+span.button {
+    font-size: 60%;
+}
+
 #links {
     height: 50px;
     color: #fff;
@@ -148,7 +152,7 @@ li#mail, li#logg_out {
 
 /* Flash messages */
 
-.fatal_img, .warning_img, .notice_img {
+#fatal_img, #warning_img, #notice_img {
   vertical-align: middle;
 }
 
