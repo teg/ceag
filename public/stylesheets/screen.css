@@ -156,7 +156,7 @@ li#mail, li#logg_out {
   vertical-align: middle;
 }
 
-.fatal, .warning, .notice {
+#fatal, #warning, #notice {
     width: 90%;
     border-width: thin;
     border-style: solid;
@@ -165,17 +165,17 @@ li#mail, li#logg_out {
     margin-bottom: 0.4em;
 }
 
-.fatal {
+#fatal {
     border-color: #f00;
     background-color: #fcc;
 }
 
-.warning {
+#warning {
     border-color: #ff0;
     background-color: #ffc;
 }
 
-.notice {
+#notice {
     border-color: #0f0;
     background-color: #cfc;
 }
