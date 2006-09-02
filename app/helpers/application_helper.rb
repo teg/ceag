@@ -55,8 +55,23 @@ module ApplicationHelper
   def flash_here!(*types)
     responce = ''
     types.each do |type|
-      responce << "<div class='#{type}'><p>#{image_tag( type.to_s + '.png', :class => type.to_s + '_img')} #{flash[type]}</p></div>" if flash[type]
+      responce << "<div id='#{type}'><p>#{image_tag( type.to_s + '.png', :id => type.to_s + '_img')} #{flash[type]}</p></div>" if flash[type]
     end
     return responce
+  end
+  
+  def error_messages_for(object_name, options = {})
+    options = options.symbolize_keys
+    object = instance_variable_get("@#{object_name}")
+    if object && !object.errors.empty?
+      content_tag("div",
+
+        content_tag("p", "#{image_tag('warning.png', :id => 'warning_img')}#{object.errors.count.to_s} feil forhindret #{object.to_norwegian} fra å bli opprettet. Følgende felter inneholdt feil:") +
+        content_tag("ul", object.errors.full_messages.collect { |msg| content_tag("li", msg) }), 
+        "id" => "warning"
+       )
+       else
+      ""
+    end
   end
 end

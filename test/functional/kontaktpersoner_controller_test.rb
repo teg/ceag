@@ -1,12 +1,12 @@
 require File.dirname(__FILE__) + '/../test_helper'
-require 'kontakt_controller'
+require 'kontaktpersoner_controller'
 
 # Re-raise errors caught by the controller.
 class KontaktpersonerController; def rescue_action(e) raise e end; end
 
 class KontaktpersonerControllerTest < Test::Unit::TestCase
   def setup
-    @controller = KontaktController.new
+    @controller = KontaktPersonerController.new
     @request    = ActionController::TestRequest.new
     @response   = ActionController::TestResponse.new
   end

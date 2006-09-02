@@ -24,9 +24,12 @@ class NyheterController < ApplicationController
   
   def opprett
     @news = News.new(params[:news])
-    return render(:action => 'ny') unless (request.post? and @news.save!)
-    flash[:notice] = "Nyheten '#{@news.title}' har blitt opprettet."
-    redirect_to :controller => 'vedlegg', :action => 'legg_til', :nyhet => @news
+    if request.post? && @news.save
+      flash[:notice] = "Nyheten '#{@news.title}' har blitt opprettet."
+      redirect_to :controller => 'vedlegg', :action => 'legg_til', :nyhet => @news
+    else
+      return render(:action => 'ny')
+    end
   end
   
   def rediger
