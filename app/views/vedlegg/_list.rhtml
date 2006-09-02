@@ -4,6 +4,7 @@
       <% if logged_in? %>
         <span class="button">[<%= link_to 'Slett', {:controller => 'vedlegg', :action => 'slett', :id => a}, :confirm => 'Er du sikker?', :post => true
          %>]</span>
+         <span class="button">[<%= link_to 'Rediger', {:controller => 'vedlegg', :action => 'rediger', :id => a} %>]</span>
       <% end %>
     </li>
     <% end %>

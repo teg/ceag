@@ -52,6 +52,7 @@ div.news {
     width: 70%;
     text-align: left;
     padding: 0.5em;
+    margin: 0.5em;
 }
 
 span.button {
