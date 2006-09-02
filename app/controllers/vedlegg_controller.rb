@@ -1,6 +1,6 @@
 class VedleggController < ApplicationController
 
-  before_filter :login_required, :only => [:opprett, :rediger, :slett]
+  before_filter :login_required, :only => [:opprett, :rediger, :legg_til, :slett]
 
   def last_ned
     @attachment = Attachment.find(params[:id])

@@ -1,6 +1,6 @@
 class NyheterController < ApplicationController
 
-  before_filter :login_required, :only => [:create, :update, :destroy]
+  before_filter :login_required, :only => [:opprett, :rediger, :oppdater, :slett]
 
   def index
     list

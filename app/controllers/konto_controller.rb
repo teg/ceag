@@ -1,4 +1,7 @@
 class KontoController < ApplicationController
+
+  before_filter :login_required, :only => [:ny]
+  
   def index
     return redirect_to(:action => 'logg_inn') unless logged_in?
     redirect_to(:controller => 'produkter')
