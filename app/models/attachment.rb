@@ -10,7 +10,7 @@ class Attachment < ActiveRecord::Base
     self[:mime_type] = @uploaded_file.content_type
   end
     
-  def after_save
+  def after_create
     #if it's large enough to be a real file
     if @uploaded_file.instance_of?(Tempfile)
       return FileUtils.copy( @uploaded_file.local_path, path_to_file) 

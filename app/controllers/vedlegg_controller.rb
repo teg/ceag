@@ -35,7 +35,16 @@ class VedleggController < ApplicationController
   
   def rediger
     @attachment = Attachment.find(params[:id])
-    @news = @attachment.news
+  end
+  
+  def oppdater
+    @attachment = Attachment.find(params[:id])
+    if @attachment.update_attributes(params[:news])
+      flash[:notice] = "Vedlegget '#{@attachment.name}' har blitt oppdatert."
+      redirect_to :controller => 'nyheter', :action => 'vis', :id => @attachment.news
+    else
+      render :action => 'rediger'
+    end
   end
   
   

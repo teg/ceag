@@ -1,7 +1,5 @@
-<h2><%= @news.title %></h2>
-
 <h3>Endre vedlegg</h3>
-<%= form_tag( { :action => 'oppdater', :news => @news },:multipart => true) %>
+<%= form_tag( { :action => 'oppdater', :id => @attachment}) %>
   <%= render :partial => 'form' %>
   <%= submit_tag "Endre" %>
 <%= end_form_tag %>
