@@ -30,6 +30,7 @@ class KontoControllerTest < Test::Unit::TestCase
   end
 
   def test_should_allow_signup
+    login_as('quentin')
     assert_difference User, :count do
       create_user
       assert_response :redirect
@@ -37,6 +38,7 @@ class KontoControllerTest < Test::Unit::TestCase
   end
 
   def test_should_require_login_on_signup
+    login_as('quentin')
     assert_no_difference User, :count do
       create_user(:login => nil)
       assert assigns(:user).errors.on(:login)
@@ -45,6 +47,7 @@ class KontoControllerTest < Test::Unit::TestCase
   end
 
   def test_should_require_password_on_signup
+    login_as('quentin')
     assert_no_difference User, :count do
       create_user(:password => nil)
       assert assigns(:user).errors.on(:password)
@@ -53,6 +56,7 @@ class KontoControllerTest < Test::Unit::TestCase
   end
 
   def test_should_require_password_confirmation_on_signup
+    login_as('quentin')
     assert_no_difference User, :count do
       create_user(:password_confirmation => nil)
       assert assigns(:user).errors.on(:password_confirmation)
@@ -61,6 +65,7 @@ class KontoControllerTest < Test::Unit::TestCase
   end
 
   def test_should_require_email_on_signup
+    login_as('quentin')
     assert_no_difference User, :count do
       create_user(:email => nil)
       assert assigns(:user).errors.on(:email)
@@ -115,7 +120,7 @@ class KontoControllerTest < Test::Unit::TestCase
 
   protected
     def create_user(options = {})
-      post :signup, :user => { :login => 'quire', :email => 'quire@example.com', 
+      post :ny, :user => { :login => 'quire', :email => 'quire@example.com', 
         :password => 'quire', :password_confirmation => 'quire' }.merge(options)
     end
     

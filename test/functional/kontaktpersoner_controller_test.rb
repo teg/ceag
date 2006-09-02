@@ -6,7 +6,7 @@ class KontaktpersonerController; def rescue_action(e) raise e end; end
 
 class KontaktpersonerControllerTest < Test::Unit::TestCase
   def setup
-    @controller = KontaktPersonerController.new
+    @controller = KontaktpersonerController.new
     @request    = ActionController::TestRequest.new
     @response   = ActionController::TestResponse.new
   end
