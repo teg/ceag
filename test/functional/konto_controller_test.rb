@@ -2,9 +2,9 @@ require File.dirname(__FILE__) + '/../test_helper'
 require 'account_controller'
 
 # Re-raise errors caught by the controller.
-class AccountController; def rescue_action(e) raise e end; end
+class KontoController; def rescue_action(e) raise e end; end
 
-class AccountControllerTest < Test::Unit::TestCase
+class KontoControllerTest < Test::Unit::TestCase
   # Be sure to include AuthenticatedTestHelper in test/test_helper.rb instead
   # Then, you can remove it from this and the units test.
   include AuthenticatedTestHelper
@@ -12,7 +12,7 @@ class AccountControllerTest < Test::Unit::TestCase
   fixtures :users
 
   def setup
-    @controller = AccountController.new
+    @controller = KontoController.new
     @request    = ActionController::TestRequest.new
     @response   = ActionController::TestResponse.new
   end
@@ -70,7 +70,7 @@ class AccountControllerTest < Test::Unit::TestCase
 
   def test_should_logout
     login_as :quentin
-    get :logout
+    get :logg_ut
     assert_nil session[:user]
     assert_response :redirect
   end
@@ -87,7 +87,7 @@ class AccountControllerTest < Test::Unit::TestCase
   
   def test_should_delete_token_on_logout
     login_as :quentin
-    get :logout
+    get :logg_ut
     assert_equal @response.cookies["auth_token"], []
   end
 

@@ -2,6 +2,10 @@ class VedleggController < ApplicationController
 
   before_filter :login_required, :only => [:opprett, :rediger, :legg_til, :slett]
 
+
+  verify :method => :post, :only => [ :opprett, :oppdater, :slett ],
+         :redirect_to => { :action => :list }
+
   def last_ned
     @attachment = Attachment.find(params[:id])
     send_file @attachment.path_to_file, :stream => true, 
@@ -10,11 +14,14 @@ class VedleggController < ApplicationController
   end
 
   def opprett
-    news = News.find_by_id(params[:nyhet])
-    attachment = Attachment.new(params[:attachment])
-    news.attachments << attachment
-    flash[:notice] = "'#{attachment.name}' har blitt vedlagt saken '#{news.title}'."
-    redirect_to :action => 'legg_til', :nyhet => news.id
+    @news = News.find_by_id(params[:nyhet])
+    @attachment = Attachment.new(params[:attachment])
+    if @news.attachments << @attachment
+      flash[:notice] = "'#{@attachment.name}' har blitt vedlagt saken '#{@news.title}'."
+      redirect_to :action => 'legg_til', :nyhet => @news.id
+    else
+      render :action => 'legg_til'
+    end
   end
   
   def list
@@ -22,6 +29,7 @@ class VedleggController < ApplicationController
   end
 
   def legg_til
+    @attachment = Attachment.new
     @news = News.find_by_id(params[:nyhet])
   end
   

@@ -1,7 +1,9 @@
 class NyheterController < ApplicationController
 
   before_filter :login_required, :only => [:opprett, :rediger, :oppdater, :slett]
-
+  verify :method => :post, :only => [ :opprett, :oppdater, :slett ],
+         :redirect_to => { :action => :list }
+         
   def index
     list
     render :action => 'list'

@@ -3,7 +3,8 @@
     <% if logged_in? %>
       <p>[<%= link_to 'Legg til vedlegg', {:controller => 'vedlegg', :action => 'legg_til', :nyhet => news}%>]
       [<%= link_to 'Rediger', {:controller => 'nyheter', :action => 'rediger', :id => news}%>]
-      [<%= link_to 'Slett', {:controller => 'nyheter', :action => 'slett', :id => news}, :confirm => 'Er du sikker?' %>]</p>
+       [<%= link_to 'Slett', {:controller => 'nyheter', :action => 'slett', :id => news}, :confirm => 'Er du sikker?', :post => true
+       %>]</p>
     <% end %>
     
     <p>

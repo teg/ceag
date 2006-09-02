@@ -1,6 +1,6 @@
 class Attachment < ActiveRecord::Base
   belongs_to :news
-  validates_presence_of :filename, :mime_type
+  validates_presence_of :filename, :mime_type, :name
   
   before_destroy :delete_file
   
