@@ -35,7 +35,7 @@ class NyheterController < ApplicationController
   
   def oppdater
     @news = News.find(params[:id])
-    if @news.update_attributes(params[:nyhet])
+    if @news.update_attributes(params[:news])
       flash[:notice] = "Saken '#{@news.title}' har blitt oppdatert."
       redirect_to :action => 'vis', :id => @news
     else
