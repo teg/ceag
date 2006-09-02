@@ -1,7 +1,7 @@
-<%= render :partial => 'nyheter/news', :nyhet => @news %>
-
 <h3>Legg til vedlegg</h3>
 <%= form_tag( { :action => 'opprett', :nyhet => @news },:multipart => true) %>
   <%= render :partial => 'form' %>
   <%= submit_tag "Legg til" %>
 <%= end_form_tag %>
+
+<%= render :partial => 'nyheter/news', :nyhet => @news %>

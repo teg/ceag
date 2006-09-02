@@ -43,7 +43,7 @@ class VedleggController < ApplicationController
     if Attachment.find(params[:id]).destroy
       flash[:notice] = "Vedlegget har blitt slettet."
     else  
-      flash[:warning] = "Klarte ikke å slette assosiert fil."
+      flash[:fatal] = "Klarte ikke å slette assosiert fil."
     end 
     redirect_to :controller => 'nyheter'
   end
