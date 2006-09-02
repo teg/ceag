@@ -133,7 +133,7 @@ div.news {
     text-decoration: none;
 }
 
-li#mail {
+li#mail, li#logg_out {
     float: right;
 }
 
@@ -148,11 +148,11 @@ li#mail {
 
 /* Flash messages */
 
-#warning_img, #notice_img {
+.fatal_img, .warning_img, .notice_img {
   vertical-align: middle;
 }
 
-#fatal, #warning, #notice {
+.fatal, .warning, .notice {
     width: 90%;
     border-width: thin;
     border-style: solid;
@@ -161,17 +161,24 @@ li#mail {
     margin-bottom: 0.4em;
 }
 
-#fatal {
+.fatal {
     border-color: #f00;
     background-color: #fcc;
 }
 
-#warning {
+.warning {
     border-color: #ff0;
     background-color: #ffc;
 }
 
-#notice {
+.notice {
     border-color: #0f0;
     background-color: #cfc;
+}
+
+.fieldWithErrors {
+  padding: 2px;
+  background-color: #ff9;
+  display: inline-table;
+  vertical-align: middle;
 }
