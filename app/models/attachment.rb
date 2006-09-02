@@ -2,6 +2,8 @@ class Attachment < ActiveRecord::Base
   belongs_to :news
   validates_presence_of :filename, :mime_type
   
+  before_destroy :delete_file
+  
   def file=(uploaded_file)
     @uploaded_file = uploaded_file
     self[:filename] = @uploaded_file.original_filename
@@ -18,5 +20,9 @@ class Attachment < ActiveRecord::Base
   # setup file location
   def path_to_file
     RAILS_ROOT + "/uploads/" + self.id.to_s
+  end
+  
+  def delete_file
+    File.delete(path_to_file) == 1
   end
 end

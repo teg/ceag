@@ -65,7 +65,7 @@ module AuthenticatedSystem
       respond_to do |accepts|
         accepts.html do
           store_location
-          redirect_to :controller => '/account', :action => 'login'
+          redirect_to :controller => '/account', :action => 'logg_inn'
         end
         accepts.xml do
           headers["Status"]           = "Unauthorized"
@@ -105,7 +105,7 @@ module AuthenticatedSystem
         user.remember_me
         self.current_user = user
         cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
-        flash[:notice] = "Logged in successfully"
+        flash[:notice] = "Velkommen tilbake!"
       end
     end
 

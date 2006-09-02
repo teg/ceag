@@ -1,6 +1,6 @@
 class VedleggController < ApplicationController
 
-  before_filter :login_required, :only => [:create, :rediger, :destroy]
+  before_filter :login_required, :only => [:opprett, :rediger, :slett]
 
   def last_ned
     @attachment = Attachment.find(params[:id])
@@ -9,11 +9,12 @@ class VedleggController < ApplicationController
                                    :type => @attachment.mime_type
   end
 
-  def create
-    news = News.find_by_id(params[:news])
+  def opprett
+    news = News.find_by_id(params[:nyhet])
     attachment = Attachment.new(params[:attachment])
     news.attachments << attachment
-    redirect_to :controller => 'nyheter', :action => 'rediger', :id => news.id
+    flash[:notice] = "'#{attachment.name}' har blitt vedlagt saken '#{news.title}'."
+    redirect_to :action => 'legg_til', :nyhet => news.id
   end
   
   def list
@@ -21,7 +22,7 @@ class VedleggController < ApplicationController
   end
 
   def legg_til
-    @news = News.find_by_id(params[:news])
+    @news = News.find_by_id(params[:nyhet])
   end
   
   def rediger
@@ -29,10 +30,14 @@ class VedleggController < ApplicationController
     @news = @attachment.news
   end
   
-  def destroy
-    #TODO remove file as well as reference
-    Attachment.find(params[:id]).destroy
-    redirect_to :controller => 'nyheter', :action => 'rediger', :id => news.id
+  
+  def slett
+    if Attachment.find(params[:id]).destroy
+      flash[:notice] = "Vedlegget har blitt slettet."
+    else  
+      flash[:warning] = "Klarte ikke å slette assosiert fil."
+    end 
+    redirect_to :controller => 'nyheter'
   end
 
 end

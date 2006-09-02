@@ -13,36 +13,37 @@ class NyheterController < ApplicationController
   
   def vis
     @news = News.find(params[:id])
-    @attachments = @news.attachments
+    render :partial => 'news', :layout => true, :locals => { :news => @news}
   end
   
-  def new
+  def ny
     @news = News.new
   end
   
-  def create
+  def opprett
     @news = News.new(params[:news])
     return render(:action => 'ny') unless (request.post? and @news.save!)
-    flash[:notice] = "Nyhet lagt til"
-    redirect_to :controller => 'vedlegg', :action => 'legg_til', :news => @news
+    flash[:notice] = "Nyheten '#{@news.title}' har blitt opprettet."
+    redirect_to :controller => 'vedlegg', :action => 'legg_til', :nyhet => @news
   end
   
   def rediger
     @news = News.find(params[:id])
   end
   
-  def update
+  def oppdater
     @news = News.find(params[:id])
-    if @news.update_attributes(params[:car])
-      flash[:notice] = 'Nyheten ble oppdatert'
+    if @news.update_attributes(params[:nyhet])
+      flash[:notice] = "Saken '#{@news.title}' har blitt oppdatert."
       redirect_to :action => 'vis', :id => @news
     else
       render :action => 'rediger'
     end
   end
   
-  def destroy
+  def slett
     News.find(params[:id]).destroy
+    flash[:notice] = "Saken har blitt slettet."
     redirect_to :action => 'list'
   end
   

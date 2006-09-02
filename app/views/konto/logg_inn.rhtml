@@ -1,0 +1,12 @@
+<%= start_form_tag %>
+<p><label for="login">Brukernavn</label><br/>
+<%= text_field_tag 'login', params[:login] %></p>
+
+<p><label for="password">Password</label><br/>
+<%= password_field_tag 'password' %></p>
+
+<p><label for="remember_me">Husk meg?</label>
+<%= check_box_tag 'remember_me' %></p>
+
+<p><%= submit_tag 'Logg inn' %></p>
+<%= end_form_tag %>

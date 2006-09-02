@@ -46,7 +46,9 @@
 
 <!-- Tabs -->
   <ul id="tabmenu">
-    <li id="mail"><a href="mailto:office@ceag.no" title="office@ceag.no">eMail <%= image_tag 'World.gif', :id => 'world' %></a></li>
+    <li id="mail"><a href="mailto:office@ceag.no" title="office@ceag.no">eMail <%= image_tag 'World.gif', :id => 'world' %></a>
+        <%= link_to('Logg ut', :controller => 'konto', :action => 'logg_ut') if logged_in?%></li>
+
   <% { '&nbsp;Nyheter&nbsp;' => 'nyheter',
        '&nbsp;Produktkataloger&nbsp;' => 'produkter',
        '&nbsp;Kontaktpersoner&nbsp;' => 'kontaktpersoner', 
@@ -57,6 +59,7 @@
 
 <!-- Content -->
 <div id="content">
+  <%= flash_here!(:warning, :notice)%>
   <%= @content_for_layout %>
 </div>
 

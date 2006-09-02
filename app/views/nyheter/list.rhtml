@@ -1,1 +1,6 @@
-<%=  render :partial => 'vis', :locals => {:news => @news} %>
+<% if logged_in?%>
+    [<%= link_to 'Opprett nyhet', :action => 'ny' %>]
+<% end %> 
+ 
+
+<%=  render :partial => 'news', :collection => @news %>

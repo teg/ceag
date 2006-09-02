@@ -1,9 +1,0 @@
-<% news.each do |n| %>
-<div class="news">
-    <h3><%= n.title %></h3>
-    <p>
-        <%= simple_format n.body %>
-    </p>
-    <%= render :partial => 'vedlegg/list', :locals => {:attachments => n.attachments} %>
-</div>
-<% end %>

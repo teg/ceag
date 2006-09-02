@@ -145,3 +145,18 @@ li#mail {
     height: 480px;
     border: none;
 }
+
+/* Flash messages */
+
+#warning_img, #notice_img {
+  vertical-align: middle
+}
+
+/* Do we want this?
+#warning, #notice {
+    width: 50%;
+    border: thin solid #000000; 
+}
+*/
+
+

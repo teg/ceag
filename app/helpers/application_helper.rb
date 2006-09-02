@@ -51,4 +51,12 @@ module ApplicationHelper
       return ""
     end
   end
+  
+  def flash_here!(*types)
+    responce = ''
+    types.each do |type|
+      responce << "<div id='#{type}'><p>#{image_tag( type.to_s + '.png', :id => type.to_s + '_img')} #{flash[type]}</p></div>" if flash[type]
+    end
+    return responce
+  end
 end

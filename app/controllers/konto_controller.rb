@@ -1,9 +1,10 @@
-class AccountController < ApplicationController
+class KontoController < ApplicationController
   def index
-    redirect_to(:action => 'login') unless logged_in? || User.count > 0
+    return redirect_to(:action => 'logg_inn') unless logged_in?
+    redirect_to(:controller => 'produkter')
   end
 
-  def login
+  def logg_inn
     return unless request.post?
     self.current_user = User.authenticate(params[:login], params[:password])
     if current_user
@@ -12,26 +13,28 @@ class AccountController < ApplicationController
         cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
       end
       redirect_back_or_default(:controller => 'produkter')
-      flash[:notice] = "Logged in successfully"
+      flash[:notice] = "Du har blitt logget inn."
     end
+    @login = params[:login]
+    flash.now[:warning] = "Brukernavnet eller passordet var feil."
   end
 
-  def signup
+  def ny
     @user = User.new(params[:user])
     return unless request.post?
     @user.save!
     self.current_user = @user
     redirect_back_or_default(:controller => 'produkter')
-    flash[:notice] = "Thanks for signing up!"
+    flash[:notice] = "Brukeren #{user} har blitt opprettet."
   rescue ActiveRecord::RecordInvalid
-    render :action => 'signup'
+    render :action => 'ny'
   end
   
-  def logout
+  def logg_ut
     self.current_user.forget_me if logged_in?
     cookies.delete :auth_token
-    reset_session
-    flash[:notice] = "You have been logged out."
-    redirect_back_or_default(:controller => 'produkter')
+    self.current_user = nil
+    flash[:notice] = "Du har blitt logget ut."
+    redirect_to(:controller => 'produkter')
   end
 end
