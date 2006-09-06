@@ -1,6 +1,5 @@
 class KontaktpersonerController < ApplicationController
 
-  caches_page :index, :list
   def index
     list
     render :action => 'list'

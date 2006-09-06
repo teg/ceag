@@ -1,7 +1,5 @@
 class AddresseController < ApplicationController
-
-  caches_page :index, :vis_kart
-  
+ 
   def index
     render :action => 'list'
   end
