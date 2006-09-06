@@ -53,6 +53,10 @@ class User < ActiveRecord::Base
   def to_norwegian
     "brukeren"
   end
+  
+  def to_s
+    self.email
+  end
 
   protected
     # before filter 
