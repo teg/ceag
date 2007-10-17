@@ -10,7 +10,7 @@ class NyheterController < ApplicationController
   end
   
   def list
-    @news = News.find :all, :limit => 5, :order => 'created_at DESC',
+    @news = News.find :all, :limit => 5, :order => 'news.created_at DESC',
                       :include => :attachments
   end
   
