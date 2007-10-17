@@ -14,8 +14,8 @@ class VedleggController < ApplicationController
 
   def illustrasjon
     @attachment = Attachment.find(params[:id])
-    send_file @attachment.path_to_file_thumbnail, :filename => @attachment.filename,
-                                                  :type => @attachment.mime_type
+    send_file @attachment.path_to_thumbnail, :filename => @attachment.filename,
+                                             :type => @attachment.mime_type
   end
   
   def opprett
