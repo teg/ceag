@@ -21,7 +21,7 @@ class Attachment < ActiveRecord::Base
      end
     if image?
       img = Magick::Image.read(path_to_file).first
-      img.resize_to_fit!(200, 300)
+      img.resize_to_fit!(300, 550)
       img.write(path_to_thumbnail){self.format = img.format}
      end
   end
