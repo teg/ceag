@@ -33,7 +33,7 @@ class Attachment < ActiveRecord::Base
     RAILS_ROOT + "/uploads/" + self.id.to_s
   end
   
-  def path_to_thumnail
+  def path_to_thumbnail
     raise "Only images have thumbnails" unless image?
     path_to_file + '_thumbnail'
   end
