@@ -8,7 +8,7 @@
       </p>
     <% end %>
     <p>
-    	<%= image_tag url_for(:controller => 'vedlegg', :action => 'last_ned', :id => news.attachments.first) %>
+    	<img src="<%=url_for(:controller => 'vedlegg', :action => 'last_ned', :id => news.attachments.first) %>" alt="<%= news.attachments.first.name%>">
         <%= simple_format news.body %>
     </p>
     <% if logged_in? %>
