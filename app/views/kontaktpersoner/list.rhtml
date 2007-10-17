@@ -2,12 +2,12 @@
   <tr>
     <th>Navn</th><th>Stilling</th><th>Telefon</th><th>E-post</th>
   </tr>
-  <% @people.each do |person| -%>
+  <% @contacts.each do |contact| -%>
   <tr class=<%= cycle("\"even\"", "\"odd\"") %>>
-    <td><%= person[:name] %></td>
-    <td><%= format_position person[:position] %></td>
-    <td><%= format_phone person[:phone] if person[:phone] %></td>
-    <td><%= mail_to person[:mail], nil, :encode => "hex" if person[:mail] %></td>
+    <td><%= contact.name %></td>
+    <td><%= format_position contact.positions %></td>
+    <td><%= contact.phone_numbers.map{|pn| number_to_phone(pn.number,:delimiter=>" ",:group_length=>2) }.join('<br />') if contact.phone_numbers %></td>
+    <td><%= mail_to contact.mail, nil, :encode => "hex" if contact.mail %></td>
   </tr>
   <% end %>
 </table>

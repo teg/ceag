@@ -10,6 +10,8 @@
     <p>
         <%= simple_format news.body %>
     </p>
-    <span class="button">[<%= link_to 'Legg til vedlegg', {:controller => 'vedlegg', :action => 'legg_til', :nyhet => news}%>]</span>
+    <% if logged_in? %>
+        <span class="button">[<%= link_to 'Legg til vedlegg', {:controller => 'vedlegg', :action => 'legg_til', :nyhet => news}%>]</span>
+    <% end %>
     <%= render :partial => 'vedlegg/list', :locals => {:attachments => news.attachments} %>
 </div>

@@ -1,19 +1,5 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
-  def format_phone(number, options = {})
-    options = options.stringify_keys
-    delimiter = options.delete("delimiter") {"<br />\n"}
-    output = []
-    if number.respond_to? :each
-      number.each do |n|
-        output << number_to_phone(n,:delimiter=>" ",:group_length=>2)
-      end
-    else
-      output << number_to_phone(number,:delimiter=>" ",:group_length=>2)
-    end
-    return output.join(delimiter)
-  end
-  
   
   def number_to_phone(number, options = {})
     options   = options.stringify_keys
@@ -36,10 +22,10 @@ module ApplicationHelper
     output = []
     if pos.respond_to? :each
       pos.each do |p|
-        output << p
+        output << p.position
       end
     else
-      output << pos
+      output << pos.position
     end
     return output.join("<br />")
   end

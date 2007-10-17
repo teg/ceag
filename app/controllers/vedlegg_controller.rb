@@ -8,9 +8,8 @@ class VedleggController < ApplicationController
 
   def last_ned
     @attachment = Attachment.find(params[:id])
-    send_file @attachment.path_to_file, :stream => true, 
-                                   :disposition => 'attachment', 
-                                   :type => @attachment.mime_type
+    send_file @attachment.path_to_file, :filename => @attachment.filename,
+                                        :type => @attachment.mime_type
   end
 
   def opprett
