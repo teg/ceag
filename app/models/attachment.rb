@@ -1,3 +1,5 @@
+require 'RMagick' 
+
 class Attachment < ActiveRecord::Base
   belongs_to :news
   validates_presence_of :filename, :mime_type, :name, :message => 'kan ikke være blank'
@@ -18,9 +20,9 @@ class Attachment < ActiveRecord::Base
        return File.open(path_to_file, "wb") { |f| f.write(@uploaded_file.read) }
      end
     if image?
-      img_orig = Magick::Image.read(path_to_file).first
-      img_orig.resize_to_fit!(200, 300)
-      img.write(path_to_thumbnail)
+      img = Magick::Image.read(path_to_file).first
+      img.resize_to_fit!(200, 300)
+      img.write(path_to_thumbnail){self.format = img.format}
      end
   end
   

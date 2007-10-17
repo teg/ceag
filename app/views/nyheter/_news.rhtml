@@ -10,7 +10,7 @@
     <p>
     	<h5><%= news.created_at.strftime('%d.%m.%Y') %></h5>
 		<% if news.illustration %>
-		  <%= link_to "<img style='float:left' src='#{url_for(:controller => 'vedlegg', :action => 'illustrasjon', :id => news.illustration)}' alt='#{news.illustration.name}'>",
+		  <%= link_to "<img style='float:left; padding: 0.5em' src='#{url_for(:controller => 'vedlegg', :action => 'illustrasjon', :id => news.illustration)}' alt='#{news.illustration.name}'>",
 				      :controller => 'vedlegg', :action => 'last_ned', :id => news.illustration %>
 	    <% end %>
         <%= simple_format news.body %>
