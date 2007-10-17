@@ -8,7 +8,7 @@
       </p>
     <% end %>
     <p>
-    	<h5><%= news.created_at.created_at.strftime('%d.%m.%Y') %></h5>
+    	<h5><%= news.created_at.strftime('%d.%m.%Y') %></h5>
 		<% if news.illustration %>
 		  <%= link_to "<img style='float:left' \
 			            src='#{url_for(:controller => 'vedlegg', :action => 'illustrasjon', :id => news.illustration)}' \
