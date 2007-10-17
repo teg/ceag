@@ -8,6 +8,7 @@
       </p>
     <% end %>
     <p>
+    	<%= image_tag :controller => 'vedlegg', :action => 'last_ned', :id => news.attachments.first %>
         <%= simple_format news.body %>
     </p>
     <% if logged_in? %>
