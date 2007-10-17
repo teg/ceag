@@ -1,6 +1,6 @@
 class Attachment < ActiveRecord::Base
   belongs_to :news
-  validates_presence_of :filename, :mime_type, :name, :message => 'kan ikke vÊre blank'
+  validates_presence_of :filename, :mime_type, :name, :message => 'kan ikke v√¶re blank'
   
   before_destroy :delete_file
   
@@ -16,12 +16,26 @@ class Attachment < ActiveRecord::Base
       return FileUtils.copy( @uploaded_file.local_path, path_to_file) 
       else
        return File.open(path_to_file, "wb") { |f| f.write(@uploaded_file.read) }
-    end
+     end
+    if image?
+      img_orig = Magick::Image.read(path_to_file).first
+      img_orig.resize_to_fit!(200, 300)
+      img.write(path_to_thumbnail)
+     end
+  end
+  
+  def image?
+    mime_type.starts_with? 'image'
   end
   
   # setup file location
   def path_to_file
     RAILS_ROOT + "/uploads/" + self.id.to_s
+  end
+  
+  def path_to_thumnail
+    raise "Only images have thumbnails" unless image?
+    path_to_file + '_thumbnail'
   end
   
   def delete_file

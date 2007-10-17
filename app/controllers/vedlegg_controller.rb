@@ -12,6 +12,12 @@ class VedleggController < ApplicationController
                                         :type => @attachment.mime_type
   end
 
+  def illustrasjon
+    @attachment = Attachment.find(params[:id])
+    send_file @attachment.path_to_file_thumbnail, :filename => @attachment.filename,
+                                                  :type => @attachment.mime_type
+  end
+  
   def opprett
     @news = News.find_by_id(params[:nyhet])
     @attachment = Attachment.new(params[:attachment])
@@ -51,7 +57,7 @@ class VedleggController < ApplicationController
     if Attachment.find(params[:id]).destroy
       flash[:notice] = "Vedlegget har blitt slettet."
     else  
-      flash[:fatal] = "Klarte ikke å slette assosiert fil."
+      flash[:fatal] = "Klarte ikke ï¿½ slette assosiert fil."
     end 
     redirect_to :controller => 'nyheter'
   end
