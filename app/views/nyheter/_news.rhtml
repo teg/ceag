@@ -13,6 +13,7 @@
 		              :controller => 'vedlegg', :action => 'last_ned', :id => news.illustration %>
 	    <% end %>
         <%= simple_format h(news.body) %>
+		<div style="clear:left"></div>
     <% if logged_in? %>
         <span class="button">[<%= link_to 'Legg til vedlegg', {:controller => 'vedlegg', :action => 'legg_til', :nyhet => news}%>]</span>
     <% end %>
