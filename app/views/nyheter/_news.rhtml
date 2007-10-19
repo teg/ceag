@@ -1,5 +1,5 @@
 <div class="news">
-    <h3><%= news.title %></h3>
+    <h3><%= h(news.title) %></h3>
     <% if logged_in? %>
       <p>
         <span class="button">[<%= link_to 'Rediger', {:controller => 'nyheter', :action => 'rediger', :id => news}%>]</span>
