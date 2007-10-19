@@ -6,7 +6,7 @@
   <tr class=<%= cycle("\"even\"", "\"odd\"") %>>
     <td><%= contact.name %></td>
     <td><%= format_position contact.positions %></td>
-    <td><%= contact.phone_numbers.map{|pn| number_to_phone(pn.number,:delimiter=>" ",:group_length=>2) }.join('<br />') if contact.phone_numbers %></td>
+    <td><%= contact.phone_numbers.map{|pn| number_to_norwegian_phone(pn.number)}.join('<br />') if contact.phone_numbers %></td>
     <td><%= mail_to contact.mail, nil, :encode => "hex" if contact.mail %></td>
   </tr>
   <% end %>

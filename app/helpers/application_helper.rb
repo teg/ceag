@@ -1,6 +1,10 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
-  
+
+  def number_to_norwegian_phone(number)
+    number_to_phone(number,:delimiter=>" ",:group_length=>2)
+  end
+
   def number_to_phone(number, options = {})
     options   = options.stringify_keys
     area_code = options.delete("area_code") { false }
