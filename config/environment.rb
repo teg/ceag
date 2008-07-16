@@ -5,7 +5,7 @@
 # ENV['RAILS_ENV'] ||= 'production'
 
 # Specifies gem version of Rails to use when vendor/rails is not present
-RAILS_GEM_VERSION = '1.2.6'
+RAILS_GEM_VERSION = '2.1.0'
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
@@ -14,31 +14,9 @@ Rails::Initializer.run do |config|
   # Settings in config/environments/* take precedence those specified here
   
   # Skip frameworks you're not going to use
-  # config.frameworks -= [ :action_web_service, :action_mailer ]
-
-  # Add additional load paths for your own custom dirs
-  # config.load_paths += %W( #{RAILS_ROOT}/extras )
-
-  # Force all environments to use the same logger level 
-  # (by default production uses :info, the others :debug)
-  # config.log_level = :debug
-
-  # Use the database for sessions instead of the file system
-  # (create the session table with 'rake db:sessions:create')
-  # config.action_controller.session_store = :active_record_store
-
-  # Use SQL instead of Active Record's schema dumper when creating the test database.
-  # This is necessary if your schema can't be completely dumped by the schema dumper, 
-  # like if you have constraints or database-specific column types
-  # config.active_record.schema_format = :sql
-
-  # Activate observers that should always be running
-  # config.active_record.observers = :cacher, :garbage_collector
-
-  # Make Active Record use UTC-base instead of local time
-  # config.active_record.default_timezone = :utc
+  config.frameworks -= [ :action_web_service, :action_mailer ]
   
-  # See Rails::Configuration for more options
+  config.action_controller.session = { :session_key => "_ceag_session", :secret => "feddc2b86efd1ab55102c9c64a12940718b9f6e0ef1d7792acf5dd651dff56bcc5ee3fc90de670394932fd8c0cf90595456c5d19f97b42bbae3fc4058b7441b5" }
 end
 
 # Add new inflection rules using the following format 
@@ -50,7 +28,3 @@ Inflector.inflections do |inflect|
    inflect.uncountable %w( kontaktpersoner )
 end
 
-# Include your application configuration below
-
-# Give us some unicode!!!!!
-# $KCODE = 'UTF8'

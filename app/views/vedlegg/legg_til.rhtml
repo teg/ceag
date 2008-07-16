@@ -4,6 +4,6 @@
   <%= file_field 'attachment', 'file'  %></p>
   <%= render :partial => 'form' %>
   <%= submit_tag "Legg til" %>
-<%= end_form_tag %>
+<%= form_tag %>
 
 <%= render :partial => 'nyheter/news', :nyhet => @news %>

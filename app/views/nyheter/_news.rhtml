@@ -3,7 +3,7 @@
     <% if logged_in? %>
       <p>
         <span class="button">[<%= link_to 'Rediger', {:controller => 'nyheter', :action => 'rediger', :id => news}%>]</span>
-        <span class="button">[<%= link_to 'Slett', {:controller => 'nyheter', :action => 'slett', :id => news}, :confirm => 'Er du sikker?', :post => true
+        <span class="button">[<%= link_to 'Slett', {:controller => 'nyheter', :action => 'slett', :id => news}, :confirm => 'Er du sikker?', :method => :post
        %>]</span>
       </p>
     <% end %>

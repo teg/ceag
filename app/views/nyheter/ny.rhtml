@@ -1,8 +1,8 @@
 <h1>Opprett nyhet</h1>
 
-<%= start_form_tag( {:action => 'opprett' }, :multipart => true )%>
+<%= form_tag( {:action => 'opprett' }, :multipart => true )%>
   <%= render :partial => 'form' %>
   <%= submit_tag "Opprett" %>
-<%= end_form_tag %>
+<%= form_tag %>
 
 <%= link_to 'Tilbake', :action => 'list' %>

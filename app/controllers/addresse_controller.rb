@@ -6,7 +6,7 @@ class AddresseController < ApplicationController
   
   def vis_kart
     @show_map = true;
-    @id = @params[:id]
+    @id = params[:id]
     render :action => 'list'
   end
 end

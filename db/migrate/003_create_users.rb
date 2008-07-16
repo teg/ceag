@@ -11,7 +11,7 @@ class CreateUsers < ActiveRecord::Migration
       t.column :remember_token_expires_at, :datetime
     end
       
-      Dispatcher.reset_application!
+  #Dispatcher.reset_application!
       
       User.create(:id => "1",
                   :crypted_password => '38abf5e4d8d4733410414c328212ca8835d12f4b', 

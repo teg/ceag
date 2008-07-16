@@ -28,10 +28,6 @@ class VedleggController < ApplicationController
       render :action => 'legg_til'
     end
   end
-  
-  def list
-    @attachments = Attachments.find :all
-  end
 
   def legg_til
     @attachment = Attachment.new
@@ -57,7 +53,7 @@ class VedleggController < ApplicationController
     if Attachment.find(params[:id]).destroy
       flash[:notice] = "Vedlegget har blitt slettet."
     else  
-      flash[:fatal] = "Klarte ikke � slette assosiert fil."
+      flash[:fatal] = "Klarte ikke å slette assosiert fil."
     end 
     redirect_to :controller => 'nyheter'
   end

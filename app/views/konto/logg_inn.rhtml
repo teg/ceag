@@ -1,4 +1,4 @@
-<%= start_form_tag %>
+<%= form_tag %>
 <p><label for="login">Brukernavn</label><br/>
 <%= text_field_tag 'login', params[:login] %></p>
 
@@ -9,4 +9,4 @@
 <%= check_box_tag 'remember_me' %></p>
 
 <p><%= submit_tag 'Logg inn' %></p>
-<%= end_form_tag %>
+<%= form_tag %>
