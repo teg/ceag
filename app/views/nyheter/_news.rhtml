@@ -8,10 +8,9 @@
       </p>
     <% end %>
   	<h5><%= news.created_at.strftime('%d.%m.%Y') %></h5>
-		<% if news.illustration %>
-      	  <%= link_to "<img style='float:left; padding: 0.5em' src='#{url_for(:controller => 'vedlegg', :action => 'illustrasjon', :id => news.illustration)}' alt='#{news.illustration.name}' />",
-		              :controller => 'vedlegg', :action => 'last_ned', :id => news.illustration %>
-	    <% end %>
+		<% if news.attachments.first %>
+      <%= image_tag news.attachments.first.document.url(:illustration), :style =>'float:left; padding: 0.5em' %>
+	  <% end %>
         <%= simple_format h(news.body) %>
     <% if logged_in? %>
         <span class="button">[<%= link_to 'Legg til vedlegg', {:controller => 'vedlegg', :action => 'legg_til', :nyhet => news}%>]</span>

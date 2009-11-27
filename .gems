@@ -1,2 +1,4 @@
 rails --version '2.3.5'
 rack --version '1.0.1'
+paperclip
+aws-s3

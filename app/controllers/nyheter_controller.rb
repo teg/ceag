@@ -9,17 +9,17 @@ class NyheterController < ApplicationController
     list
     render :action => 'list'
   end
-  
+
   def list
     @news = News.find :all, :limit => 5, :order => 'news.created_at DESC',
                       :include => :attachments
   end
-  
+
   def vis
     @news = News.find(params[:id])
     render :partial => 'news', :layout => true, :locals => { :news => @news}
   end
-  
+
   def ny
     @news = News.new
   end

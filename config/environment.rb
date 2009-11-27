@@ -16,6 +16,9 @@ Rails::Initializer.run do |config|
   # Skip frameworks you're not going to use
   config.frameworks -= [ :action_web_service, :action_mailer ]
   
+  config.gem 'paperclip'
+  config.gem "aws-s3", :lib => "aws/s3"
+  
   config.action_controller.session = { :session_key => "_ceag_session", :secret => "feddc2b86efd1ab55102c9c64a12940718b9f6e0ef1d7792acf5dd651dff56bcc5ee3fc90de670394932fd8c0cf90595456c5d19f97b42bbae3fc4058b7441b5" }
 end
 

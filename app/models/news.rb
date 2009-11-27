@@ -4,10 +4,6 @@ class News < ActiveRecord::Base
   
   validates_presence_of :title, :body, :message => 'kan ikke være blank'
   
-  def illustration
-    attachments.to_a.find{|attachment| attachment.image? }
-  end
-
   def to_norwegian
     "nyheten"
   end

@@ -1,0 +1,14 @@
+development:
+  bucket: ceag_development
+  access_key_id: AKIAI5QUTMKYKOSXHIQQ
+  secret_access_key: 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
+
+test:
+  bucket: ceag_test
+  access_key_id: AKIAI5QUTMKYKOSXHIQQ
+  secret_access_key: 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
+
+production:
+  bucket: ceag
+  access_key_id: AKIAI5QUTMKYKOSXHIQQ
+  secret_access_key: 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

@@ -1,9 +1,9 @@
 <h3>Legg til vedlegg</h3>
-<%= form_tag( { :action => 'opprett', :nyhet => @news },:multipart => true) %>
-  <p><label for="attachment_file">Fil</label><br />
-  <%= file_field 'attachment', 'file'  %></p>
+<% form_for( :attachment, :url => { :action => 'opprett', :nyhet => @news }, :html => {:multipart => true}) do |form| %>
+  <p><label for="attachment_document">Fil</label><br />
+  <%= form.file_field :document %>
   <%= render :partial => 'form' %>
   <%= submit_tag "Legg til" %>
-<%= form_tag %>
+<% end %>
 
 <%= render :partial => 'nyheter/news', :nyhet => @news %>
