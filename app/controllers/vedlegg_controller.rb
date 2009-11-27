@@ -1,3 +1,4 @@
+#encoding: utf-8
 class VedleggController < ApplicationController
 
   before_filter :login_required, :only => [:opprett, :rediger, :legg_til, :slett]

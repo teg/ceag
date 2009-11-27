@@ -1,3 +1,4 @@
+#encoding: utf-8
 class KontaktpersonerController < ApplicationController
 
   def index

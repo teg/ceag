@@ -1,3 +1,4 @@
+#encoding: utf-8
 class KontoController < ApplicationController
 
   before_filter :login_required, :only => [:ny]

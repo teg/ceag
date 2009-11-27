@@ -1,4 +1,4 @@
-# Methods added to this helper will be available to all templates in the application.
+#encoding: utf-8
 module ApplicationHelper
 
   def number_to_norwegian_phone(number)
@@ -56,7 +56,7 @@ module ApplicationHelper
     if object && !object.errors.empty?
       content_tag("div",
 
-        content_tag("p", "#{image_tag('warning.png', :id => 'warning_img')}#{object.errors.count.to_s} feil forhindret #{object.to_norwegian} fra å bli opprettet. Følgende felter inneholdt feil:") +
+        content_tag("p", "#{image_tag('warning.png', :id => 'warning_img')}#{object.errors.count.to_s} feil forhindret #{object.to_norwegian} fra Ã¥ bli opprettet. FÃ¸lgende felter inneholdt feil:") +
         content_tag("ul", object.errors.full_messages.collect { |msg| content_tag("li", msg) }), 
         "id" => "warning"
        )

@@ -1,3 +1,4 @@
+#encoding: utf-8
 class AddresseController < ApplicationController
  
   def index

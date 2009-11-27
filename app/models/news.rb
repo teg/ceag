@@ -1,3 +1,4 @@
+#encoding: utf-8
 class News < ActiveRecord::Base
   has_many :attachments, :dependent => :destroy
   

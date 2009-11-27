@@ -1,3 +1,4 @@
+#encoding: utf-8
 class NyheterController < ApplicationController
 
   before_filter :login_required, :only => [:opprett, :rediger, :oppdater, :slett]
