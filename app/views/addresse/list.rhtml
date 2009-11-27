@@ -38,52 +38,51 @@
 
 </table>
 <% if @show_map %>
-<div id='map'></div>
-<% end %>
+	<div id='map' style="width: 80%; height: 500px; background: red;"></div>
+	
+	<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+	
+	<% javascript_tag do %>
 
-<% content_for("page_scripts") do %>
+	var map = null;
+	var drammen = null;
+	var drammenOpts = null;
+	var stavanger = null;
+	var stavangerOpts = null;
 
-    <% if @show_map %>
+	$(document).ready(function() {
+	    drammen = new google.maps.LatLng(59.756896, 10.267966);
+		drammenOpts = {zoom: 14, center: drammen, mapTypeId: google.maps.MapTypeId.ROADMAP};
+	    stavanger = new google.maps.LatLng(58.884387, 5.740382);
+		stavangerOpts = {zoom: 14, center: stavanger, mapTypeId: google.maps.MapTypeId.ROADMAP};
+	    <%= if @id == 'drammen'
+	            'loadDrammen()'
+	        else
+	            'loadStavanger()'
+	        end %>
+	});
 
-    Event.observe(window, 'load', function()
-        {
-        <%= if @id == 'drammen'
-                'loadDrammen()'
-            else
-                'loadStavanger()'
-            end %>
-        }
-    );
+	function loadDrammen() {
+	    if( map == null ) {
+	        map = new google.maps.Map(document.getElementById("map"), drammenOpts);
+			loadMarkers();
+	    } else {
+	        map.setOptions(drammenOpts);
+	    }
+	}
 
-    var drammen = null;
-    var stavanger = null;
-    var map = null;
-    var pinDrammen = null;
-    var pinStavanger =  null;
-
-    function loadMaps() {
-        map = new VEMap('map');
-        drammen = new VELatLong(59.756896, 10.267966);
-        stavanger = new VELatLong(58.884387, 5.740382);
-        pinDrammen = new VEPushpin(1, drammen,'http://www.jklm.no/ceag/images/Ceag_small.gif','Hovedkontor','COOPER Crouse-Hinds AS, Husebysletta 9, 3400 Lier');
-        pinStavanger = new VEPushpin(2,stavanger,'http://www.jklm.no/ceag/images/Ceag_small.gif','Avdeling Sandnes','COOPER Crouse-Hinds AS, Torneroseveien 4, 4315 Sandnes');
-        map.LoadMap(drammen, 14 ,'r' , false);
-        map.AddPushpin(pinDrammen);
-        map.AddPushpin(pinStavanger);
-    }
-    
-    function loadDrammen() {
-        if( map == null ) {
-            loadMaps();
-        }
-        map.SetCenter(drammen);
-    }
-    
-    function loadStavanger() {
-        if( map == null ) {
-            loadMaps();
-        }
-        map.SetCenter(stavanger);
-    }
-    <% end %>
+	function loadStavanger() {
+	    if( map == null ) {
+	        map = new google.maps.Map(document.getElementById("map"), stavangerOpts);
+	      	loadMarkers();
+	    } else {
+	        map.setOptions(stavangerOpts);
+	    }
+	}
+	
+	function loadMarkers() {
+		new google.maps.Marker({map: map, position: stavanger, icon: 'http://www.jklm.no/ceag/images/Ceag_small.gif'});
+    	new google.maps.Marker({map: map, position: drammen, icon: 'http://www.jklm.no/ceag/images/Ceag_small.gif'});
+	}
+	<% end %>
 <% end %>
