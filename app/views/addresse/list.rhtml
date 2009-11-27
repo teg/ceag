@@ -1,13 +1,10 @@
-<table style="width: 90%; margin-left: auto; margin-right: auto;">
+<h1>COOPER Crouse-Hinds AS</h1>
+
+<table style="width: 600px; margin-left: auto; margin-right: auto;">
 <tr>
     <th></th><th>Hovedkontor</th><th>Avdeling Sandnes</th>
 </tr>
 <tr class="even">
-    <th></th>
-    <td>COOPER Crouse-Hinds AS</td>
-    <td>COOPER Crouse-Hinds AS</td>
-</tr>
-<tr class="odd">
     <th>Besøksadresse</th>
     <td>Husebysletta 9<br />3400 Lier<br /><%=  if @show_map
                                                     link_to_function "(kart)", "loadDrammen();"
@@ -20,17 +17,17 @@
                                                         link_to "(kart)", :action => 'vis_kart', :id => 'stavanger';
                                                     end %></td>
 </tr>
-<tr class="even">
+<tr class="odd">
     <th>Postadresse</th>
     <td>Postboks 565<br />3412 Lierstranda</td>
     <td>Postboks 269<br />4066 Stavanger</td>
 </tr>
-<tr class="odd">
+<tr class="even">
     <th>Telefon</th>
     <td><%= number_to_norwegian_phone 32244600 %></td>
     <td><%= number_to_norwegian_phone 51631135 %></td>
 </tr>
-<tr class="even">
+<tr class="odd">
     <th>Faks</th>
     <td><%= number_to_norwegian_phone  32244646 %></td>
     <td><%= number_to_norwegian_phone  51631699 %></td>
